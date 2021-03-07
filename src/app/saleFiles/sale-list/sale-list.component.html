@@ -1,0 +1,32 @@
+<div class="container col-8">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Sale List</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Pet</th>
+            <th>Client</th>
+            <th>Employee</th>
+            <th><button (click)="createSale()" class="btn btn-primary">Create New</button></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let sale of sales | async">
+            <td>{{sale.id}}</td>
+            <td>{{sale.pet}}</td>
+            <td>{{sale.client}}</td>
+            <td>{{sale.employee}}</td>
+            <td>
+              <button (click)="deleteSale(sale.id)" class="btn btn-danger">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>Total revenue: {{total}}</h3>
+    </div>
+  </div>
+</div>

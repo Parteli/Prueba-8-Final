@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row">
+    <div class="container col-6">
+      <div class="panel-body">
+        <h2>Pet to purchase</h2>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>
+                <button (click)="addPet()" class="btn btn-primary">Add Pet</button>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let pet of cartService.pets">
+              <td>{{pet.type}}</td>
+              <td>{{pet.name}}</td>
+              <td>{{pet.price}}</td>
+              <td>
+                <button (click)="cartService.removeFromCart(pet)" class="btn btn-danger">Remove</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>Total Price: {{cartService.totalPrice}}</h3>
+      </div>
+    </div>
+    <div class="container  col-4">
+      <div>
+        <h2>Client</h2>
+        
+        <div *ngIf="cartService.client == null" >
+          <button (click)="findClient()" class="btn btn-info" style="margin-right: 5px;">DNI: </button>
+          <input type="text" [(ngModel)]="dni" id="search" name="search">
+          <br>
+          <br>
+          <button (click)="createClient()" class="btn btn-primary" >New Client</button>
+        </div>
+
+        <div *ngIf="cartService.client != null">
+          <div class="panel-body" >
+            <ul class="table table-striped">
+              <li>DNI: {{cartService.client.dni}}</li>
+              <li>Name: {{cartService.client.name}} {{cartService.client.surname}}</li>
+              <li>Email: {{cartService.client.email}}</li>
+              <li>Phone: {{cartService.client.phone}}</li>
+              <br>
+              <button (click)="clearClient()" class="btn btn-warning">Clear Client</button>
+            </ul>
+          </div>
+
+          <button (click)="finishSale()" class="btn btn-primary"
+           *ngIf="cartService.pets.length > 0">Finish sale</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

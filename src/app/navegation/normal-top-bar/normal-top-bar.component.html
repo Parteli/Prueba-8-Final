@@ -1,0 +1,15 @@
+<div class="container">
+    <nav class="navbar navbar-dark bg-primary">
+        <ul class="nav nav-pills nav-fill">
+            <li *ngIf="cartService.employee!=null">
+                <button disabled class="btn btn-light" style="margin-right: 20px">{{cartService.employee.id}}</button>
+            </li>
+            <li><button (click)="cart()" class="btn btn-primary" style="border: 2px">Cart</button></li>
+            <li><button (click)="petList()" class="btn btn-primary" style="border: 2px">Pets</button></li>
+            <li><button (click)="clientList()" class="btn btn-primary" style="border: 2px">Clients</button></li>
+            <li><button (click)="saleList()" class="btn btn-primary" style="border: 2px">Sales History</button></li>
+            <li><button (click)="logout()" class="btn btn-primary" style="border: 2px">Logout</button></li>
+        </ul>
+    </nav>
+</div>
+<br>

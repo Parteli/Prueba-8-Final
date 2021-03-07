@@ -1,0 +1,33 @@
+
+<div class="container">
+<nav class="navbar navbar-light">
+    <ul class="nav nav-pills nav-fill">
+        <li class="nav-item"><span>DEBUG BAR</span></li>
+        <li class="nav-item">
+            <a routerLink="login" class="nav-link" routerLinkActive="active">Login</a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="cart" class="nav-link" routerLinkActive="active">Cart</a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="pet/list" class="nav-link" routerLinkActive="active">Pets</a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="client/list" class="nav-link" routerLinkActive="active">Clients</a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="employee/list" class="nav-link" routerLinkActive="active">Employees</a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="sale/list" class="nav-link" routerLinkActive="active">Sales History</a>
+        </li>
+        <li class="nav-item">
+            <button (click)="setAdminUser()" class="btn btn-light">Set admin</button>
+        </li>
+        <li class="nav-item">
+            <button (click)="setNormalUser()" class="btn btn-light">Set employee</button>
+        </li>
+        <li class="nav-item"><span>ID: admin  | Password: admin123</span></li>
+    </ul>
+</nav>
+</div>

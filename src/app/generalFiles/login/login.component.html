@@ -1,0 +1,41 @@
+<div class="container col-6">
+  <br>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>LOGIN</h2>
+    </div>
+    <br>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group ">
+      <div class="form-group input-group">
+          <label for="empID" class=" input-group-text">ID: </label>
+          <input type="text" class="form-control" maxlength="6" id="empID"
+                required [(ngModel)]="employee.id" #empID="ngModel" name="id" EmpIdValidator
+                autocomplete="off">
+
+          <div *ngIf="empID.errors != null">
+            <div class="alert alert-danger" *ngIf="empID.invalid && (empID.dirty || empID.touched)">
+                <div *ngIf="empID.errors.EmpIdValidator">{{empID.errors.EmpIdValidator.message}}</div>
+            </div>
+          </div>
+      </div>
+
+      <div >
+        <div class="form-group input-group">
+          <label for="password" class=" input-group-text">Password: (debug) </label>
+          <input type="text" class="form-control" id="password" 
+                required [(ngModel)]="employee.password" name="password" autocomplete="off"
+                #empPwd="ngModel" EmpPwdValidator>
+
+          <div *ngIf="empPwd.errors != null">
+            <div class="alert alert-danger" *ngIf="empPwd.invalid && (empPwd.dirty || empPwd.touched)">
+                <div *ngIf="empPwd.errors.EmpPwdValidator">{{empPwd.errors.EmpPwdValidator.message}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+  </form>
+</div>

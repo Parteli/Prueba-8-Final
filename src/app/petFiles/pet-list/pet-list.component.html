@@ -1,0 +1,56 @@
+<div class="container col-10">
+  <div class="panel panel-primary">
+    <div class="panel-heading d-flex justify-content-around">
+      <button (click)="reloadData()" class="btn btn-light"><h2>Pet List</h2></button>
+      <div>
+        <button (click)="search()" class="btn btn-info" style="margin-right: 5px;">SEARCH</button>
+        <input type="text" [(ngModel)]="searchText" id="search" name="search">
+      </div>
+
+      
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th><button (click)="sortById()">ID</button></th>
+            <th><button (click)="sortByName()">Name</button></th>
+            <th><button (click)="sortByType()">Type</button></th>
+            <th><button (click)="sortByPrice()">Price</button></th>
+            <th>
+
+              <div class="form-check">
+                <button (click)="showSold()" class="btn btn-info" *ngIf=sold>Show Available</button>
+                <button (click)="showSold()" class="btn btn-info" *ngIf=!sold>Show Sold</button>
+              </div></th>
+              <th>
+                <button (click)="createPet()" class="btn btn-primary" *ngIf=cartService.isAdmin()>CREATE NEW</button>
+              </th>
+              <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pet of petArray; let i = index"  >
+            <td>{{pet.id}}</td>
+            <td>{{pet.name}}</td>
+            <td>{{pet.type}}</td>
+            <td>{{pet.price}}</td>
+            <td *ngIf=pet.sold>
+              SOLD
+            </td>
+            <td *ngIf=!pet.sold>
+              <button *ngIf="notOnCart(i); else elseBlock" (click)="addToCart(pet.id)" class="btn btn-info">Add to Cart</button>
+              <ng-template #elseBlock  > On shop cart </ng-template>
+            </td>
+            <td *ngIf=cartService.isAdmin()>
+              <button (click)="updatePet(pet.id)" class="btn btn-warning">Update</button>
+            </td>
+            <td *ngIf=cartService.isAdmin()>
+              <button (click)="deletePet(pet.id)" class="btn btn-danger">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

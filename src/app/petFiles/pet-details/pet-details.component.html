@@ -1,0 +1,28 @@
+<div class="container col-8">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Pet Detail</h2>
+    </div>
+<div *ngIf="pet" class="panel-body">
+  <div>
+    <label><b>ID: </b></label> {{pet.id}}
+  </div>
+  <div>
+    <label><b>Name: </b></label> {{pet.name}}
+  </div>
+  <div>
+    <label><b>Type: </b></label> {{pet.type}}
+  </div>
+  <div>
+    <label><b>Price: </b></label> {{pet.price}}
+  </div>  
+  <div>
+    <label><b>Sold: </b></label> {{pet.sold}}
+  </div>
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to pet List</button><br>
+</div>
+</div>
